@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tạo đơn hàng</title>
+</head>
+<body>
+    <h1>Tạo đơn hàng</h1>
+    <form method="POST" action="/taohonhang">
+        <input type="text" name="search" placeholder="Tìm kiếm sản phẩm">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    {% if data.results %}
+        <h2>Kết quả tìm kiếm:</h2>
+        <ul>
+            {% for product in data.results %}
+                <li>{{ product.TenHang }} - {{ product.DonGiaBan }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

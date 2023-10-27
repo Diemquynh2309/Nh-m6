@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/DangNhap.css') }}">
+    <style>
+        body {
+            background-image: url("static/image/DangNhap.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="/" method="POST">
+                    <h2>Welcome</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <label for="username">TÀI KHOẢN</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <label for="password">MẬT KHẨU</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="forget">
+                        <label for=""><input type="checkbox">Ghi nhớ
+                    </div>
+                    <div class="login">
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

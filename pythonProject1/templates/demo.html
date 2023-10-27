@@ -1,0 +1,155 @@
+<form method="GET" action="/kho">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên khách hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Tổng số nợ</th>
+                    <th>Trạng Thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for khach_hang in data.list_khach_hang %}
+                    <tr>
+                        <td>{{ khach_hang.TenKhachHang }}</td>
+                        <td>{{ khach_hang.SDT }}</td>
+                        <td>{{ khach_hang.TongTienNo }}</td>
+                        <td>{{ khach_hang.TrangThai }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+
+
+
+
+<table class="table table-striped table-hover">
+                    <form method="GET" action="/kho" class="d-flex justify-content-center">
+                          <div class="form-group mt-3 mb-3">
+                            <div class="input-group d-flex rounded" style="background-color: #FFFFFF; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);">
+                              <p class="mb-2 mt-2 pt-1 px-4 fs-4">Danh sách sản phẩm</p>
+                              <input type="text" name="search" class="form-control mt-2 mb-2 mr-1 px-3 rounded" placeholder="Tìm kiếm sản phẩm" style="background-color: #cccccc;">
+                              <div class="input-group-append px-3">
+                                <button type="submit" name="search_data" class="btn btn-primary custom-bg mt-2 mb-2 mx-3 pb-3 rounded" style="background-color: #cccccc; margin-left: 5px;">Tìm kiếm</button>
+                              </div>
+                            </div>
+                          </div>
+                    </form>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn Vị Tính</th>
+                        <th>Giá Nhập</th>
+                        <th>Giá Bán</th>
+                        <th>Thao tác</th>
+                    </tr>
+
+                <tbody>
+                    {% for kho in data.results %}
+                        <form method="POST" action="/sua">
+                            <tr>
+                                <td contenteditable="true"><input type="text" name="tenhang_sua" value="{{ kho.TenHang }}" class="input-editable"></td>
+                                <td contenteditable="true"><input type="number" name="soluong_sua" value="{{ kho.SoLuong }}" class="input-editable"></td>
+                                <td contenteditable="true"><input type="text" name="donvitinh_sua" value="{{ kho.DonViTinh }}" class="input-editable"></td>
+                                <td contenteditable="true"><input type="number" name="dongia_sua" value="{{ kho.DonGia }}" class="input-editable"></td>
+                                <td contenteditable="true"><input type="number" name="giaban_sua" value="{{ kho.DonGiaBan }}" class="input-editable"></td>
+                                <td>
+                                    <input type="submit" name="submit_button" value="Sửa">
+                                    <input type="submit" name="submit_button" value="Xoá">
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+<div class="mx-5 w-100">
+                <div class="bg-white fs-4 rounded w-100">
+                    <p class="pb-2 pt-2 px-2">
+                        Quay lại danh sách sản phẩm
+                    </p>
+                </div>
+                <form method="POST" action="/themhang">
+                    <div class="w-100">
+                        <div class="w-100 mb-5">
+                            <div class="col-lg-6 col-12 rounded bg-white p-3 w-100 shadow">
+                                <div class="form-group mb-3 mt-2 fs-4 w-100 underline-wrapper">
+                                    <p>Thông tin chung</p>
+                                </div>
+                                <div class="form-group mb-3 mt-3">
+                                    <label for="ten_hang" class="mb-3">Mã Sản Phẩm</label>
+                                    <input type="text" class="form-control shadow-sm" id="ma_hang" name="ma_hang" required>
+                                </div>
+                                <div class="form-group mb-3 mt-3">
+                                    <label for="ten_hang" class="mb-3">Tên Sản Phẩm:</label>
+                                    <input type="text" class="form-control shadow-sm" id="ten_hang" name="ten_hang" required>
+                                </div>
+                                <div class="form-row d-flex w-100">
+                                    <div class="form-row w-50 mb-3">
+                                        <div class="col-3 mb-3">
+                                            <label for="don_vi_tinh" class="mb-3">Đơn Vị Tính:</label>
+                                            <input type="text" class="form-control shadow-sm" id="don_vi_tinh" name="don_vi_tinh" required>
+                                        </div>
+                                        <div class="col-3 ml-6">
+                                            <label for="don_gia" class="mb-3">Giá Nhập:</label>
+                                            <input type="number" class="form-control shadow-sm" id="don_gia" name="don_gia" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row col-3 w-50 mb-3">
+                                        <label for="so_luong" class="mb-3">Số Lượng:</label>
+                                        <input type="number" class="form-control shadow-sm" id="so_luong" name="so_luong" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid h-100 w-100 bg-white rounded shadow-sm">
+                        <div class="from-group mt-3 mb-3 fs-4 underline-wrapper">
+                            <p class="pt-2 pb-2">Giá sản phẩm</p>
+                        </div>
+                        <div class="form-row d-flex w-100">
+                            <div class="pr-5 w-50">
+                                <label for="gia_ban" class="mb-3">Giá Bán:</label>
+                                <div>
+                                    <input type="number" class="form-control shadow-sm input-sm" id="gia_ban" name="gia_ban" required>
+                                </div>
+                            </div>
+                            <div class="w-50 mb-3">
+                                <p>Thêm ảnh</p>
+                                <div class="dashed-container"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="float-end rounded mt-3 mb-3">
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+<form action="/taohoadon" method="POST">\
+    <label for="ten_khach_hang">Tên khách hàng:</label>
+    <input type="text" id="ten_khach_hang" name="ten_khach_hang"><br><br>
+
+    <label for="so_dien_thoai">Số điện thoại:</label>
+    <input type="text" id="so_dien_thoai" name="so_dien_thoai"><br><br>
+
+    <label for="tong_thanh_tien">Tổng thành tiền:</label>
+    <input type="text" id="tong_thanh_tien" name="tong_thanh_tien"><br><br>
+
+    <label for="trang_thai">Trạng thái:</label>
+    <select id="trang_thai" name="trang_thai">
+      <option value="DaThanhToan">Đã thanh toán</option>
+      <option value="ChuaThanhToan">Chưa thanh toán</option>
+    </select><br><br>
+
+    <input type="submit" value="Tạo hoá đơn">
+  </form>
